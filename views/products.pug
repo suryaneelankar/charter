@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+ head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{MyTitle}
+    body
+        h1 Products
+    each product in products
+        li= product.title
+
+    main
+        .grid
+            each product in products
+                .product
+                    h2= product.title
+                    p= product.description
+                    p $#{product.price}
+                    form(action="/cart" method="POST")
+                        input(type="hidden" name="productId" value=product._id)
+                        input(type="number" min="1" max="5" name="quantity" value="1")
+                        button(type="submit") Add to Cart
+                        img(src="",alt="Book",srcset="")
